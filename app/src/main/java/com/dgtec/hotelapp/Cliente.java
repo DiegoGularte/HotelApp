@@ -4,29 +4,73 @@ public class Cliente {
 
     private int id;
     private String nome;
-    private double CPF;
+    private String RG;
+    private String CPF;
+    private String CEP;
     private String endereco;
-    private String data;
-    private  String email;
+    private String telefone;
+    private String dataNasc;
+    private String sexo;
+    private  String estadoCivil;
 
     public String getEndereco() {
         return endereco;
     }
 
-    public String getData() {
-        return data;
+    public String getRG() {
+        return RG;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setRG(String RG) {
+        this.RG = RG;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCPF() {
+        return CPF;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
     }
 
     public void setEndereco(String endereco) {
@@ -37,21 +81,29 @@ public class Cliente {
 
     }
 
-    public Cliente(int id, String nome, double CPF, String endereco, String data, String email) {
+    public Cliente(int id, String nome, String RG, String CPF, String CEP, String endereco,String telefone, String data, String sexo, String estadoCivil) {
         this.id = id;
         this.nome = nome;
+        this.RG = RG;
         this.CPF = CPF;
+        this.CEP = CEP;
         this.endereco = endereco;
-        this.data = data;
-        this.email = email;
+        this.telefone = telefone;
+        this.dataNasc = data;
+        this.sexo = sexo;
+        this.estadoCivil = estadoCivil;
     }
 
-    public Cliente(String nome, double CPF, String endereco, String data, String email) {
+    public Cliente(String nome, String RG, String CPF, String CEP, String endereco,String telefone, String data, String sexo, String estadoCivil) {
         this.nome = nome;
+        this.RG = RG;
         this.CPF = CPF;
+        this.CEP = CEP;
         this.endereco = endereco;
-        this.data = data;
-        this.email = email;
+        this.telefone = telefone;
+        this.dataNasc = data;
+        this.sexo = sexo;
+        this.estadoCivil = estadoCivil;
     }
 
     public int getId() {
@@ -70,14 +122,7 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public double getCPF() {
-        return CPF;
-    }
 
-    public void setCPF(double CPF) {
-        this.CPF = CPF;
-
-    }
 
     @Override
     public String toString(){

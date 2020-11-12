@@ -14,10 +14,13 @@ public class ClienteDAO {
 
         ContentValues valores = new ContentValues();
         valores.put("nome", cliente.getNome());
+        valores.put("RG", cliente.getRG());
         valores.put("CPF", cliente.getCPF());
+        valores.put("CEP", cliente.getCEP());
         valores.put("endereco", cliente.getEndereco());
-        valores.put("data",cliente.getData());
-        valores.put("email",cliente.getEmail());
+        valores.put("dataNasc",cliente.getDataNasc());
+        valores.put("sexo", cliente.getSexo());
+        valores.put("estadoCivil",cliente.getEstadoCivil());
 
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getWritableDatabase();
@@ -31,10 +34,13 @@ public class ClienteDAO {
 
         ContentValues valores = new ContentValues();
         valores.put("nome", cliente.getNome());
+        valores.put("RG", cliente.getRG());
         valores.put("CPF", cliente.getCPF());
+        valores.put("CEP", cliente.getCEP());
         valores.put("endereco", cliente.getEndereco());
-        valores.put("data",cliente.getData());
-        valores.put("email",cliente.getEmail());
+        valores.put("dataNasc",cliente.getDataNasc());
+        valores.put("sexo", cliente.getSexo());
+        valores.put("estadoCivil",cliente.getEstadoCivil());
 
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getWritableDatabase();
@@ -68,10 +74,14 @@ public class ClienteDAO {
                 Cliente p = new Cliente();
                 p.setId(cursor.getInt(0));
                 p.setNome(cursor.getString(1));
-                p.setCPF(cursor.getDouble(2));
-                p.setEndereco(cursor.getString(3));
-                p.setData(cursor.getString(4));
-                p.setEmail(cursor.getString(5));
+                p.setRG(cursor.getString(2));
+                p.setCPF(cursor.getString(3));
+                p.setCEP(cursor.getString(4));
+                p.setEndereco(cursor.getString(5));
+                p.setTelefone(cursor.getString(6));
+                p.setDataNasc(cursor.getString(7));
+                p.setSexo(cursor.getString(8));
+                p.setEstadoCivil(cursor.getString(9));
                 lista.add( p );
 
             }while(cursor.moveToNext());
@@ -92,10 +102,14 @@ public class ClienteDAO {
             Cliente p = new Cliente();
             p.setId(cursor.getInt(0));
             p.setNome(cursor.getString(1));
-            p.setCPF(cursor.getDouble(2));
-            p.setEndereco(cursor.getString(3));
-            p.setData(cursor.getString(4));
-            p.setEmail(cursor.getString(5));
+            p.setRG(cursor.getString(2));
+            p.setCPF(cursor.getString(3));
+            p.setCEP(cursor.getString(4));
+            p.setEndereco(cursor.getString(5));
+            p.setTelefone(cursor.getString(6));
+            p.setDataNasc(cursor.getString(7));
+            p.setSexo(cursor.getString(8));
+            p.setEstadoCivil(cursor.getString(9));
             return  p;
         }else
             return null;
