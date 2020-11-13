@@ -18,6 +18,7 @@ public class ClienteDAO {
         valores.put("CPF", cliente.getCPF());
         valores.put("CEP", cliente.getCEP());
         valores.put("endereco", cliente.getEndereco());
+        valores.put("telefone",cliente.getTelefone());
         valores.put("dataNasc",cliente.getDataNasc());
         valores.put("sexo", cliente.getSexo());
         valores.put("estadoCivil",cliente.getEstadoCivil());
@@ -38,6 +39,7 @@ public class ClienteDAO {
         valores.put("CPF", cliente.getCPF());
         valores.put("CEP", cliente.getCEP());
         valores.put("endereco", cliente.getEndereco());
+        valores.put("telefone",cliente.getTelefone());
         valores.put("dataNasc",cliente.getDataNasc());
         valores.put("sexo", cliente.getSexo());
         valores.put("estadoCivil",cliente.getEstadoCivil());

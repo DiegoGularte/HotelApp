@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,7 +20,7 @@ public class FormularioActivity extends AppCompatActivity {
     private String acao;
     private Cliente cliente;
     private RadioGroup rgSexo;
-   // private Spinner spinner_estadoCivil;
+    private Spinner spinner;
 
 
     @Override
@@ -41,10 +42,14 @@ public class FormularioActivity extends AppCompatActivity {
 
 
         //Criando o Spinner estado civil
-        /*spinner_estadoCivil = (Spinner) findViewById(R.id.estadoCivil_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.estado_civil, android.R.layout.simple_spinner_item);
+         spinner = (Spinner) findViewById(R.id.estadoCivil_spinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.estadoCivil_array, android.R.layout.simple_spinner_item);
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_estadoCivil.setAdapter(adapter);*/
+
+        spinner.setAdapter(adapter);
 
 
 
@@ -61,34 +66,47 @@ public class FormularioActivity extends AppCompatActivity {
             int id = getIntent().getExtras().getInt("idCliente");
             cliente = ClienteDAO.getProdutoById(FormularioActivity.this, id);
             etNome.setText(cliente.getNome());
-            etCPF.setText(String.valueOf(cliente.getCPF()));
+            etRG.setText(cliente.getRG());
+            etCPF.setText(cliente.getCPF());
+            etCEP.setText(cliente.getCEP());
             etEndereco.setText(cliente.getEndereco());
-            etTelefone.setText(cliente.getEstadoCivil());
+            etTelefone.setText(cliente.getTelefone());
             etDataNasc.setText(cliente.getDataNasc());
+
+            // setar o valor da tabela no campo sexo
+            String selecSexo = cliente.getSexo();
+
+            Log.i("sexo",selecSexo);
+            switch (selecSexo) {
+                case "Masculino":
+                    RadioButton radioButtonM = findViewById(R.id.radio_masculino);
+                    radioButtonM.setChecked(true);
+                    break;
+
+                case "Feminino":
+                    RadioButton radioButtonF = findViewById(R.id.radio_feminino);
+                    radioButtonF.setChecked(true);
+                    break;
+                default:
+                    RadioButton radioButtonO = findViewById(R.id.radio_outros);
+                    radioButtonO.setChecked(true);
+                    break;
+            }
+
+            String estadoCivil = cliente.getEstadoCivil();
+           // Log.i("estado",estadoCivil);
+            String[] arrayEstados = getResources().getStringArray(R.array.estadoCivil_array);
+            for(int i = 0; i < arrayEstados.length; i++){
+                if(arrayEstados[i].equals(estadoCivil)){
+                    spinner.setSelection(i);
+                    break;
+                }
+            }
+
+
         }
-
-
-
     }
-    //Radio grupo SEXO
-   /* public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
 
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radio_masculino:
-                if (checked)
-                    cliente.setSexo("masculino");
-                    break;
-            case R.id.radio_feminino:
-                if (checked)
-                    cliente.setSexo("Feminino");
-                    break;
-            default:
-                cliente.setSexo("outros");
-        }
-    }*/
     //Botao salvar um novo Cliente
     private void salvar(){
         if ( cliente == null ){
@@ -111,7 +129,7 @@ public class FormularioActivity extends AppCompatActivity {
             cliente.setEndereco(etEndereco.getText().toString());
             cliente.setTelefone(etTelefone.getText().toString());
             cliente.setDataNasc(etDataNasc.getText().toString());
-
+            cliente.setEstadoCivil(spinner.getSelectedItem().toString());;
             //Sexo
             int sexoSelec = rgSexo.getCheckedRadioButtonId();
 
@@ -120,11 +138,8 @@ public class FormularioActivity extends AppCompatActivity {
                 RadioButton rbSexoSelec = findViewById(sexoSelec);
 
                 cliente.setSexo(rbSexoSelec.getText().toString());
+                //Log.i("sexoR",cliente.getSexo());
             }
-
-
-            //cliente.setSexo("Outros");
-            cliente.setEstadoCivil("Solteiro");
 
             if( acao.equals( "inserir" ) ){
                 ClienteDAO.inserir( this , cliente);
