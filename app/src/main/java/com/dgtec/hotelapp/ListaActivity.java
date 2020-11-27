@@ -38,17 +38,17 @@ public class ListaActivity extends AppCompatActivity {
         //geração do dados dos Clientes para exportacao
         List<Cliente> lista = ClienteDAO.getClientes(this);
         StringBuilder data = new StringBuilder();
-        data.append("ID"  + ","
-                + "NOME" + ","
-                + "CPF" + ","
-                + "Telefone" + ","
-                + "CEP" );
+       /* data.append("nome"  + ","
+                + "cpf" + ","
+                + "telefone" + ","
+                + "cep" + ","
+                + "ativo" + "\n");*/
         for(Cliente obj : lista) {
-            data.append("\n" + obj.getId() + ","
-                             + obj.getNome() + ","
-                             + obj.getCPF() + ","
-                             + obj.getTelefone() + ","
-                             + obj.getCEP() );
+            data.append(  obj.getCPF() + ","
+                        + obj.getNome() + ","
+                        + obj.getTelefone() + ","
+                        + obj.getCEP() + ","
+                        + obj.getAtivo() + "\n" );
         }
         //saving the file into device
         try{

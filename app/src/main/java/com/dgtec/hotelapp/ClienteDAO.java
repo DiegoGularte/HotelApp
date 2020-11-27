@@ -13,6 +13,7 @@ public class ClienteDAO {
     public static void inserir(Context context, Cliente cliente){
 
         ContentValues valores = new ContentValues();
+
         valores.put("nome", cliente.getNome());
         valores.put("RG", cliente.getRG());
         valores.put("CPF", cliente.getCPF());
@@ -22,6 +23,7 @@ public class ClienteDAO {
         valores.put("dataNasc",cliente.getDataNasc());
         valores.put("sexo", cliente.getSexo());
         valores.put("estadoCivil",cliente.getEstadoCivil());
+        valores.put("ativo", cliente.getAtivo());
 
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getWritableDatabase();
@@ -34,6 +36,7 @@ public class ClienteDAO {
     public static void editar(Context context, Cliente cliente){
 
         ContentValues valores = new ContentValues();
+
         valores.put("nome", cliente.getNome());
         valores.put("RG", cliente.getRG());
         valores.put("CPF", cliente.getCPF());
@@ -43,6 +46,7 @@ public class ClienteDAO {
         valores.put("dataNasc",cliente.getDataNasc());
         valores.put("sexo", cliente.getSexo());
         valores.put("estadoCivil",cliente.getEstadoCivil());
+        valores.put("ativo", cliente.getAtivo());
 
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getWritableDatabase();
@@ -84,6 +88,7 @@ public class ClienteDAO {
                 p.setDataNasc(cursor.getString(7));
                 p.setSexo(cursor.getString(8));
                 p.setEstadoCivil(cursor.getString(9));
+                p.setAtivo(cursor.getString(10));
                 lista.add( p );
 
             }while(cursor.moveToNext());
@@ -112,6 +117,7 @@ public class ClienteDAO {
             p.setDataNasc(cursor.getString(7));
             p.setSexo(cursor.getString(8));
             p.setEstadoCivil(cursor.getString(9));
+            p.setAtivo(cursor.getString(10));
             return  p;
         }else
             return null;

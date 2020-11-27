@@ -11,7 +11,16 @@ public class Cliente {
     private String telefone;
     private String dataNasc;
     private String sexo;
-    private  String estadoCivil;
+    private String estadoCivil;
+    private String ativo;
+
+    public String getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(String ativo) {
+        this.ativo = ativo;
+    }
 
     public String getEndereco() {
         return endereco;
@@ -81,7 +90,8 @@ public class Cliente {
 
     }
 
-    public Cliente(int id, String nome, String RG, String CPF, String CEP, String endereco,String telefone, String data, String sexo, String estadoCivil) {
+    public Cliente(int id, String nome, String RG, String CPF, String CEP, String endereco,String telefone, String data, String sexo, String estadoCivil, String ativo) {
+        this.ativo = ativo;
         this.id = id;
         this.nome = nome;
         this.RG = RG;
@@ -94,7 +104,8 @@ public class Cliente {
         this.estadoCivil = estadoCivil;
     }
 
-    public Cliente(String nome, String RG, String CPF, String CEP, String endereco,String telefone, String data, String sexo, String estadoCivil) {
+    public Cliente(String ativo, String RG, String CPF, String CEP, String endereco,String telefone, String data, String sexo, String estadoCivil, String nome) {
+        this.ativo = ativo;
         this.nome = nome;
         this.RG = RG;
         this.CPF = CPF;
